@@ -1,7 +1,7 @@
 # dds
  以JNDI的方式实现动态数据源
  
-Tomcat7.0配置JNDI数多据源
+# Tomcat7.0配置JNDI数多据源
 注意：${CATALINA_HOME}表示tomcat的安装路径，如：
 （D:\Program Files (x86)\apache-tomcat-7.0.53）
 
