@@ -74,13 +74,13 @@
 
 ResourceLink 重要节点解释：
 
-1、 global="testdbmaster"  ：在server.xml中定义的数据库连接池名称。
-2、 name="lntestdbmaster" ：暴露给 Web 应用的数据源名称。
-3、 type ：数据库连接池类型。
+1. global="testdbmaster"  ：在server.xml中定义的数据库连接池名称。
+2. name="lntestdbmaster" ：暴露给 Web 应用的数据源名称。
+3. type ：数据库连接池类型。
 
 Environment 重要说明：
-1、name="dblist" ：这个节点不能改。
-2、value="master=lntestdbmaster;slaves=lntestdbslave1" ：这个节点中	master和slaves不能改。“=”号后面的名字就是ResourceLink 节点中定义的name。 	slaves如果对应多个从数据源用“,”分割。如：slaves=dbslave1,dbslave2
+1. name="dblist" ：这个节点不能改。
+2. value="master=lntestdbmaster;slaves=lntestdbslave1"：这个节点中master和slaves不能改。“=”号后面的名字就是ResourceLink节点中定义的name。slaves如果对应多个从数据源用“,”分割。如：slaves=dbslave1,dbslave2
 
 ### 四、在项目的pom文件中添加jar包。
 ```xml
@@ -119,7 +119,7 @@ Environment 重要说明：
 ```
 
 总要节点说明： 
-expression="execution(* service..*.*(..))" ：配置 @DataSource 注解所	在的包。这个切面应该是应用的service层。
+1. expression="execution(* service..*.*(..))" ：配置 @DataSource 注解所	在的包。这个切面应该是应用的service层。
 
 ### 六、在service层的接口上添加@DataSource注解
 @DataSource(DataSource.MASTER) ： 主库，做插入个跟新操作
