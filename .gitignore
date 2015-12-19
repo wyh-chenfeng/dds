@@ -1,0 +1,14 @@
+*.prefs
+.settings
+classes
+*.classes
+*.class
+.DS_Store
+*.project
+target
+.project
+.classpath
+log
+.log
+.springBeans
+*/tools/mybatis-generator-usage/src/main/java/*
