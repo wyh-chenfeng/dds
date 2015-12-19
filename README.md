@@ -54,11 +54,11 @@
 ```
 
 重要节点解释：
-1、name="testdbslave1" ：数据库连接池名称。
-2、url="jdbc:mysql://10.9.53.56:3306/base_order" ：数据库连接地址。
-3、username="ddb_user" ：数据库用户名。
-4、password="qazwsx" ：数据库密码。
-5、validationQuery="SELECT 'x'" ：一个SQL查询语句，用于在连接被返回给应	用前的连接池验证，至少返回一行记录的SQL SELECT语句。
+#### 1、name="testdbslave1" ：数据库连接池名称。
+#### 2、url="jdbc:mysql://10.9.53.56:3306/base_order" ：数据库连接地址。
+#### 3、username="ddb_user" ：数据库用户名。
+#### 4、password="qazwsx" ：数据库密码。
+#### 5、validationQuery="SELECT 'x'" ：一个SQL查询语句，用于在连接被返回给应	用前的连接池验证，至少返回一行记录的SQL SELECT语句。
 
 ### 三、修改${CATALINA_HOME}\conf下的context.xml文件。
 在context.xml文件的Context节点中添加ResourceLink节点和Environment节点。如：
