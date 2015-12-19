@@ -8,7 +8,7 @@
 
 二、修改${CATALINA_HOME}\conf下的server.xml文件。
 在server.xml文件的GlobalNamingResources节点中添加Resource 节点。如
-
+```xml
 <GlobalNamingResources>
     
     <Resource name="testdbmaster" 
@@ -42,7 +42,7 @@
 	password="qazwsx" 
 	validationQuery="SELECT 'x'"/>
 </GlobalNamingResources>
-
+```
 
 
 重要节点解释：
