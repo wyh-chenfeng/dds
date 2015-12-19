@@ -54,6 +54,7 @@
 ```
 
 重要节点解释：
+
 1.name="testdbslave1" ：数据库连接池名称。
 2.url="jdbc:mysql://10.9.53.56:3306/base_order" ：数据库连接地址。
 3.username="ddb_user" ：数据库用户名。
