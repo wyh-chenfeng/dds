@@ -4,42 +4,47 @@
 # Tomcat7.0配置JNDI数多据源
 注意：${CATALINA_HOME}表示tomcat的安装路径，如：（D:\Program Files (x86)\apache-tomcat-7.0.53）
 
-<br>
 一、拷贝数据库驱动到：${CATALINA_HOME}\lib下，这里是（mysql-connector-java-5.1.25.jar、druid-1.0.16.jar）
 
 二、修改${CATALINA_HOME}\conf下的server.xml文件。
 在server.xml文件的GlobalNamingResources节点中添加Resource 节点。如
+<pre><code>
 <GlobalNamingResources>
     ...
-
-<Resource name="testdbmaster" 
-auth="Container" 
-driverClassName="com.mysql.jdbc.Driver" 	factory="com.alibaba.druid.pool.DruidDataSourceFactory" 	filters="stat" 
-initialSize="1" 
-maxActive="200" 
-maxWait="60000" 	
-minIdle="1" 
-singleton="true" 
-testOnBorrow="false" 
-testOnReturn="false" 	
-testWhileIdle="true" 	type="com.alibaba.druid.pool.DruidDataSource" 	url="jdbc:mysql://10.9.53.187:3306/base_order" 	username="ddb_user"
-password="qazwsx" 	 
-validationQuery="SELECT 'x'"/>
-
-	<Resource name="testdbslave1"  
-auth="Container" 
-driverClassName="com.mysql.jdbc.Driver" 		factory="com.alibaba.druid.pool.DruidDataSourceFactory" 		filters="stat" 
-initialSize="1" 
-maxActive="200" 
-maxWait="60000" 	
-minIdle="1" 				
-singleton="true" 
-testOnBorrow="false" 
-testOnReturn="false" 		
-testWhileIdle="true" 				type="com.alibaba.druid.pool.DruidDataSource" 	url="jdbc:mysql://10.9.53.56:3306/base_order" 	username="ddb_user" 
-password="qazwsx" 
-validationQuery="SELECT 'x'"/>
+    <Resource name="testdbmaster" 
+	auth="Container" 
+	driverClassName="com.mysql.jdbc.Driver" 	factory="com.alibaba.druid.pool.DruidDataSourceFactory" 	filters="stat" 
+	initialSize="1" 
+	maxActive="200" 
+	maxWait="60000" 	
+	minIdle="1" 
+	singleton="true" 
+	testOnBorrow="false" 
+	testOnReturn="false" 	
+	testWhileIdle="true" 	type="com.alibaba.druid.pool.DruidDataSource" 	url="jdbc:mysql://10.9.53.187:3306/base_order" 	username="ddb_user"
+	password="qazwsx" 	 
+	validationQuery="SELECT 'x'"/>
+	
+		<Resource name="testdbslave1"  
+	auth="Container" 
+	driverClassName="com.mysql.jdbc.Driver" 		factory="com.alibaba.druid.pool.DruidDataSourceFactory" 		filters="stat" 
+	initialSize="1" 
+	maxActive="200" 
+	maxWait="60000" 	
+	minIdle="1" 				
+	singleton="true" 
+	testOnBorrow="false" 
+	testOnReturn="false" 		
+	testWhileIdle="true" 				
+	type="com.alibaba.druid.pool.DruidDataSource" 	
+	url="jdbc:mysql://10.9.53.56:3306/base_order" 	
+	username="ddb_user" 
+	password="qazwsx" 
+	validationQuery="SELECT 'x'"/>
 </GlobalNamingResources>
+
+</code></pre>
+
 
 重要节点解释：
 1、name="testdbslave1" ：数据库连接池名称。
