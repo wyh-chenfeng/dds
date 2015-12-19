@@ -10,7 +10,7 @@
 在server.xml文件的GlobalNamingResources节点中添加Resource 节点。如
 <code>
 <GlobalNamingResources>
-    ...
+    
     <Resource name="testdbmaster" 
 	auth="Container" 
 	driverClassName="com.mysql.jdbc.Driver" 	factory="com.alibaba.druid.pool.DruidDataSourceFactory" 	filters="stat" 
