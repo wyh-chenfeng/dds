@@ -45,13 +45,17 @@ public class DynamicDataSource extends AbstractRoutingDataSource {
 	@Override
 	protected DataSource determineTargetDataSource() {
 		String key = (String) determineCurrentLookupKey();
-
+		
 		if (cn.smart.dds.DataSource.SLAVE.equals(key)) {
+			// 注解是slave的时候返回从数据库
 			int idx = Math.abs(slaveIndex.getAndIncrement());
 			return slaveDataSourceArray[idx % slaveDataSourceArray.length];
+		} else if (key == null || cn.smart.dds.DataSource.MASTER.equals(key)) {
+			// 注解是master或者是没有注解的情况下返回主数据库
+			return masterDataSource;
 		}
 
-		return masterDataSource;
+		return null;
 	}
 
 	/**
