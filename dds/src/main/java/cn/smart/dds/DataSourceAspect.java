@@ -27,6 +27,7 @@ public class DataSourceAspect {
                 DynamicDataSourceHandler.putDataSource(data.value());
                 logger.debug(data.value());
             } else {
+            	// 设置默认注解值（主库）
             	DynamicDataSourceHandler.putDataSource(DataSource.MASTER);
             	logger.debug("Default DataSourcee is Master");
             }
