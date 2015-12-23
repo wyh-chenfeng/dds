@@ -26,6 +26,9 @@ public class DataSourceAspect {
                         .getAnnotation(DataSource.class);
                 DynamicDataSourceHandler.putDataSource(data.value());
                 logger.debug(data.value());
+            } else {
+            	DynamicDataSourceHandler.putDataSource(DataSource.MASTER);
+            	logger.debug("Default DataSourcee is Master");
             }
             
         } catch (Exception e) {

@@ -50,12 +50,10 @@ public class DynamicDataSource extends AbstractRoutingDataSource {
 			// 注解是slave的时候返回从数据库
 			int idx = Math.abs(slaveIndex.getAndIncrement());
 			return slaveDataSourceArray[idx % slaveDataSourceArray.length];
-		} else if (key == null || cn.smart.dds.DataSource.MASTER.equals(key)) {
-			// 注解是master或者是没有注解的情况下返回主数据库
-			return masterDataSource;
 		}
-
-		return null;
+		
+		// 注解是master的时候返回主数据库
+		return masterDataSource;
 	}
 
 	/**
