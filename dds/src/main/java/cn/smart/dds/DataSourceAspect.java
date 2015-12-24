@@ -15,12 +15,20 @@ public class DataSourceAspect {
         Object target = point.getTarget();
         String method = point.getSignature().getName();
 
-        Class<?>[] classz = target.getClass().getInterfaces();
-
+        //获取接口
+        Class<?>[] interfaces = target.getClass().getInterfaces();
+        
         Class<?>[] parameterTypes = ((MethodSignature) point.getSignature())
                 .getMethod().getParameterTypes();
         try {
-            Method m = classz[0].getMethod(method, parameterTypes);
+        	Method m = null;
+        	if (interfaces != null && interfaces.length > 0) {
+        		// 先找接口
+        		m = interfaces[0].getMethod(method, parameterTypes);
+			} else {
+				// 接口不存在的情况下再找实现类
+				m = target.getClass().getMethod(method, parameterTypes);
+			}
             if (m != null && m.isAnnotationPresent(DataSource.class)) {
                 DataSource data = m
                         .getAnnotation(DataSource.class);
