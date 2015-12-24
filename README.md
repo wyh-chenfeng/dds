@@ -123,7 +123,7 @@ Environment 重要说明：
 
 1. expression="execution(* service..*.*(..))" ：配置 @DataSource 注解所	在的包。这个切面应该是应用的service层。
 
-### 六、在service层的接口上添加@DataSource注解
+### 六、在service层的方法上上添加@DataSource注解【接口上的注解优先级高于实现类上的注解】
 @DataSource(DataSource.MASTER) ： 主库，做插入个跟新操作
 @DataSource(DataSource.SLAVE) ：从库，做查询操作
 
