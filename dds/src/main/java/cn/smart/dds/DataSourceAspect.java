@@ -24,8 +24,14 @@ public class DataSourceAspect {
         	Method m = null;
 	        // 先判断接口是否存在
 			if (interfaces != null && interfaces.length > 0) {
-				m = interfaces[0].getMethod(method, parameterTypes);
-			}
+				for (int i = 0; i < interfaces.length; i++) {
+					try {
+						m = interfaces[i].getMethod(method, parameterTypes);
+					} catch (Exception e) {
+						logger.debug(e);
+					}
+				}
+			} 
         	
 			// 如果接口存在 再判断注解是否存在
 			if (m != null && m.isAnnotationPresent(DataSource.class)) {
@@ -34,7 +40,11 @@ public class DataSourceAspect {
                 logger.debug(data.value());
             } else {
             	// 如果接口不存在或者接口上的注解不存在时，找对应的类上注解
-            	m = target.getClass().getMethod(method, parameterTypes);
+            	try {
+					m = target.getClass().getMethod(method, parameterTypes);
+				} catch (Exception e) {
+					logger.debug(e);
+				}
             	
             	if (m != null && m.isAnnotationPresent(DataSource.class)) {
                     DataSource data = m.getAnnotation(DataSource.class);
